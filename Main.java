@@ -1,58 +1,40 @@
-package HomeWork1;
+package Animal;
 
-/**
- *   JavaDoc comment
- */
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumbers();
-    }
 
-    public static void printThreeWords() {
-        System.out.println("Orange");
-        System.out.println("Banana");
-        System.out.println("Apple");
-    }
+    public static void main(String[] args) throws InputMismatchException {
 
-    public static void checkSumSign() {
-        int a = 5;
-        int b = 3;
-        int c = a + b;
+        Scanner scanner = new Scanner(System.in);
+        double distanceRun = Math.random() * 500;
+        double distanceSwim = Math.random() * 0;
+        Cat cat = new Cat(distanceRun, distanceSwim);
 
-        if (c >= 0){
-            System.out.println("Сумма положительная");
-        } if (c < 0){
-            System.out.println("Сумма отрицательная");
-        }
-    }
+        distanceRun = Math.random()*2000;
+        distanceSwim = Math.random()*100;
+        Animal dog = new Dog(distanceRun, distanceSwim);
 
-    public static void printColor() {
 
-        int value = 14;
+        System.out.println("Кошка может пробежать: " + cat.getAnimalDistanceRun() +
+                " м. \nСобака может пробежать: " + dog.getAnimalDistanceRun() + " м.");
 
-        if (value <= 0) {
-            System.out.println("Красный");
-        } else if (value > 100) {
-                System.out.println("Желтый");
-            }else{
-            System.out.println("Зеленый");
-        }
+        System.out.println("Введите дистанцию для бега:");
+        double distance = scanner.nextDouble();
 
-    }
+        System.out.println("Кошка пытается выполнить run(" + distance + "). Результат: " + cat.run(distance));
+        System.out.println("Собака пытается выполнить run(" + distance + "). Результат: " + dog.run(distance));
+        System.out.println("\n****************\n");
 
-    public static void compareNumbers() {
+        System.out.println("Кошка может проплыть: " + cat.getAnimalDistanceSwim() +
+                " м. \nСобака может проплыть: " + dog.getAnimalDistanceSwim() + " м.");
 
-        int a = 7;
-        int b = 9;
+        System.out.println("Введите дистанцию для плавания:");
+        distance = scanner.nextDouble();
 
-        if (a >= b) {
-            System.out.println(a >= b);
-        } else {
-            System.out.println(a < b);
-        }
+        System.out.println("Кошка пытается выполнить swim(" + distance + "). Результат: " + cat.swim(distance));
+        System.out.println("Собака пытается выполнить swim(" + distance + "). Результат: " + dog.swim(distance));
+
     }
 }
