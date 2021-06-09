@@ -1,58 +1,34 @@
-package HomeWork1;
+package CatFeed;
 
-/**
- *   JavaDoc comment
- */
+import java.util.Scanner;
 
 public class Main {
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumbers();
-    }
+        int action;
+        Cat[] allCats = new Cat[4];
+        allCats[0] = new Cat("Васька", 5, false);
+        allCats[1] = new Cat("Рыжий", 30, false);
+        allCats[2] = new Cat("Черныш", 10, false);
+        allCats[3] = new Cat("Мурзик", 45, false);
 
-    public static void printThreeWords() {
-        System.out.println("Orange");
-        System.out.println("Banana");
-        System.out.println("Apple");
-    }
 
-    public static void checkSumSign() {
-        int a = 5;
-        int b = 3;
-        int c = a + b;
-
-        if (c >= 0){
-            System.out.println("Сумма положительная");
-        } if (c < 0){
-            System.out.println("Сумма отрицательная");
+        Plate plate = new Plate(50);
+        plate.info();
+        for (Cat allCat : allCats) {
+            if (!allCat.fullness && allCat.appetite < plate.food) {
+                allCat.eat(plate);
+                allCat.fullness = true;
+                System.out.println("Котик " + allCat.name + " покушал!");
+            } else {
+                System.out.println("Котик " + allCat.name + " не поел!");
+            }
         }
-    }
+        plate.info();
+        System.out.println("Сколько грамм корма добавить еще в миску?");
+        action = sc.nextInt();
+        plate.increaseFood(action);
+        plate.info();
 
-    public static void printColor() {
-
-        int value = 14;
-
-        if (value <= 0) {
-            System.out.println("Красный");
-        } else if (value > 100) {
-                System.out.println("Желтый");
-            }else{
-            System.out.println("Зеленый");
-        }
-
-    }
-
-    public static void compareNumbers() {
-
-        int a = 7;
-        int b = 9;
-
-        if (a >= b) {
-            System.out.println(a >= b);
-        } else {
-            System.out.println(a < b);
-        }
     }
 }
